@@ -59,7 +59,7 @@ public class MovieDetailsFragment extends Fragment {
         /*Define what should be displayed*/
         originalTitleTextView.setText(originalTitle);
         synopsisTextView.setText(synopsis);
-        ratingTextView.setText(rating + getContext().getString(R.string.rating));
+        ratingTextView.setText(rating + " " + getContext().getString(R.string.rating));
         releaseDateTextView.setText(releaseDate);
 
         /*Form URL for the movie's poster*/
