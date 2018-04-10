@@ -129,11 +129,11 @@ public class MoviePosterFragment extends Fragment {
         switch (path) {
             case "popular":
                 path = "top_rated";
-                getActivity().setTitle("Top Rated Movies");
+                getActivity().setTitle(getContext().getString(R.string.top_rated));
                 break;
             case "top_rated":
                 path = "popular";
-                getActivity().setTitle("Popular Movies");
+                getActivity().setTitle(getContext().getString(R.string.popular));
                 break;
         }
         currentPage = 0;

@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">Popular Movies</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--Screen titles based on current filter for movies-->
+    <string name="top_rated">Top Rated Movies</string>
+    <string name="popular">Popular Movies</string>
+
+    <!--Appended to movie rating on details screen-->
+    <string name="rating"> out of 10</string>
 </resources>
