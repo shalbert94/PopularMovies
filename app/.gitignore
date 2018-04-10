@@ -1,1 +1,5 @@
+#Ignore gradle build file
 /build
+
+#Ignore file containing API keys
+app/src/main/res/values/apikeys.xml
