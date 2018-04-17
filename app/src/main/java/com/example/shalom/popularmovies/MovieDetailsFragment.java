@@ -9,7 +9,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.shalom.popularmovies.data.model.Movie;
 import com.squareup.picasso.Picasso;
+
+import org.parceler.Parcels;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,12 +23,9 @@ import butterknife.ButterKnife;
  * Fragment controlling screen with movie details
  */
 public class MovieDetailsFragment extends Fragment {
-    /*Key's used to persist data through the received {@code Bundle}*/
-    public static final String ORIGINAL_TITLE_KEY = "ORIGINAL_TITLE_KEY";
-    public static final String POSTER_PATH_KEY = "POSTER_PATH_KEY";
-    public static final String SYNOPSIS_KEY = "SYNOPSIS_KEY";
-    public static final String RATING_KEY = "RATING_KEY";
-    public static final String RELEASE_DATE_KEY = "RELEASE_DATE_KEY";
+    /*Key used to persist data through the received {@code Bundle}*/
+    public static final String MOVIE_KEY = "MOVIE_KEY";
+
 
     /*Bind child-views*/
     @BindView(R.id.original_title_textview)
@@ -52,12 +52,14 @@ public class MovieDetailsFragment extends Fragment {
 
         ButterKnife.bind(this, view);
 
-        /*Get {@code String}'s from arguments*/
-        String originalTitle = getArguments().getString(ORIGINAL_TITLE_KEY);
-        String posterPath = getArguments().getString(POSTER_PATH_KEY);
-        String synopsis = getArguments().getString(SYNOPSIS_KEY);
-        String rating = getArguments().getString(RATING_KEY);
-        String releaseDate = getArguments().getString(RELEASE_DATE_KEY);
+        /*Unparcel {@code Movie.class} from arguments*/
+        Bundle bundle = this.getArguments();
+        Movie thisMovie = (Movie) Parcels.unwrap(bundle.getParcelable(MOVIE_KEY));
+        String originalTitle = thisMovie.getOriginalTitle();
+        String posterPath = thisMovie.getPosterPath();
+        String synopsis = thisMovie.getOverview();
+        String rating = thisMovie.getVoteAverage().toString();
+        String releaseDate = thisMovie.getReleaseDate();
 
         /*Define what should be displayed*/
         originalTitleTextView.setText(originalTitle);
