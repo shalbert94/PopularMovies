@@ -11,6 +11,9 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,12 +27,17 @@ public class MovieDetailsFragment extends Fragment {
     public static final String RATING_KEY = "RATING_KEY";
     public static final String RELEASE_DATE_KEY = "RELEASE_DATE_KEY";
 
-    /*Instantiations of every child-view*/
-    private TextView originalTitleTextView;
-    private ImageView posterPathImageView;
-    private TextView synopsisTextView;
-    private TextView ratingTextView;
-    private TextView releaseDateTextView;
+    /*Bind child-views*/
+    @BindView(R.id.original_title_textview)
+    TextView originalTitleTextView;
+    @BindView(R.id.details_poster_imageview)
+    ImageView posterPathImageView;
+    @BindView(R.id.plot_synopsis_textview)
+    TextView synopsisTextView;
+    @BindView(R.id.user_rating_textview)
+    TextView ratingTextView;
+    @BindView(R.id.release_date_textview)
+    TextView releaseDateTextView;
 
     public MovieDetailsFragment() {
         // Required empty public constructor
@@ -39,15 +47,10 @@ public class MovieDetailsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        /*Inflate the layout for this fragment*/
         View view = inflater.inflate(R.layout.fragment_movie_details, container, false);
 
-        /*Initialize child views*/
-        originalTitleTextView = (TextView) view.findViewById(R.id.original_title_textview);
-        posterPathImageView = (ImageView) view.findViewById(R.id.details_poster_imageview);
-        synopsisTextView = (TextView) view.findViewById(R.id.plot_synopsis_textview);
-        ratingTextView = (TextView) view.findViewById(R.id.user_rating_textview);
-        releaseDateTextView = (TextView) view.findViewById(R.id.release_date_textview);
+        ButterKnife.bind(this, view);
 
         /*Get {@code String}'s from arguments*/
         String originalTitle = getArguments().getString(ORIGINAL_TITLE_KEY);

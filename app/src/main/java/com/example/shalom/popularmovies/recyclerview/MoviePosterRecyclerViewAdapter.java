@@ -19,6 +19,9 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by shalom on 2018-03-23.
  */
@@ -35,17 +38,17 @@ public class MoviePosterRecyclerViewAdapter extends RecyclerView.Adapter {
         /*The {@code RelativeLayout} enclosing the views of this {@code ViewHolder}*/
         public RelativeLayout parentLayout;
         /*Holds loaded images from movie's {@code posterPath} in {@link Movie.java}*/
-        public ImageView moviePosterIV;
+        @BindView(R.id.movie_poster_imageview)
+        ImageView moviePosterIV;
         /*Holds movie title from {@code title} in {@link Movie.java}*/
-        public TextView movieTitleTV;
+        @BindView(R.id.movie_title_textview)
+        TextView movieTitleTV;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            /*Initialize views*/
             parentLayout = (RelativeLayout) itemView.findViewById(R.id.grid_item_movie_poster_relativelayout);
-            moviePosterIV = (ImageView) itemView.findViewById(R.id.movie_poster_imageview);
-            movieTitleTV = (TextView) itemView.findViewById(R.id.movie_title_textview);
+            ButterKnife.bind(this, itemView);
         }
     }
 
@@ -118,7 +121,7 @@ public class MoviePosterRecyclerViewAdapter extends RecyclerView.Adapter {
         if (filterChanged) {
             this.movieList.clear();
         }
-            this.movieList.addAll(movieList);
-            notifyDataSetChanged();
+        this.movieList.addAll(movieList);
+        notifyDataSetChanged();
     }
 }
