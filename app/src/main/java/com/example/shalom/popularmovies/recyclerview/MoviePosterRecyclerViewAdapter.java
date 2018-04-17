@@ -17,6 +17,8 @@ import com.example.shalom.popularmovies.R;
 import com.example.shalom.popularmovies.data.model.Movie;
 import com.squareup.picasso.Picasso;
 
+import org.parceler.Parcels;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -78,22 +80,18 @@ public class MoviePosterRecyclerViewAdapter extends RecyclerView.Adapter {
         /*Cast {@code holder} to type {@code ViewHolder}*/
         ViewHolder viewHolder = (ViewHolder) holder;
 
+//        TODO(1) Implement onClickListener with ButterKnife
         /*Set {@code OnClickListener} for tapping anywhere on the grid item*/
         viewHolder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*Prepare {@code Bundle} thatl'll be passed to the {@code MovieDetailsFragment}*/
-                Bundle movieDetails = new Bundle();
-                movieDetails.putString(MovieDetailsFragment.ORIGINAL_TITLE_KEY, movie.getOriginalTitle());
-                movieDetails.putString(MovieDetailsFragment.POSTER_PATH_KEY, movie.getPosterPath());
-                movieDetails.putString(MovieDetailsFragment.SYNOPSIS_KEY, movie.getOverview());
-                movieDetails.putString(MovieDetailsFragment.RATING_KEY, movie.getVoteAverage().toString());
-                movieDetails.putString(MovieDetailsFragment.RELEASE_DATE_KEY, movie.getReleaseDate());
 
-                /*Get FragmentManager*/
                 FragmentManager fm = fragmentActivity.getSupportFragmentManager();
                 MovieDetailsFragment movieDetailsFragment = new MovieDetailsFragment();
 
+                /*Pass the clicked movie's details to the Fragment*/
+                Bundle movieDetails = new Bundle();
+                movieDetails.putParcelable(MovieDetailsFragment.MOVIE_KEY, Parcels.wrap(movie));
                 movieDetailsFragment.setArguments(movieDetails);
 
                 /*Add Fragment*/
