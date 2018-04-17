@@ -1,54 +1,62 @@
 
 package com.example.shalom.popularmovies.data.model;
 
-import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+import java.util.List;
+
+@Parcel
 public class Movie {
 
+    /*Properties cannot be private*/
     @SerializedName("vote_count")
     @Expose
-    private Integer voteCount;
+    Integer voteCount;
     @SerializedName("id")
     @Expose
-    private Integer id;
+    Integer id;
     @SerializedName("video")
     @Expose
-    private Boolean video;
+    Boolean video;
     @SerializedName("vote_average")
     @Expose
-    private Double voteAverage;
+    Double voteAverage;
     @SerializedName("title")
     @Expose
-    private String title;
+    String title;
     @SerializedName("popularity")
     @Expose
-    private Double popularity;
+    Double popularity;
     @SerializedName("poster_path")
     @Expose
-    private String posterPath;
+    String posterPath;
     @SerializedName("original_language")
     @Expose
-    private String originalLanguage;
+    String originalLanguage;
     @SerializedName("original_title")
     @Expose
-    private String originalTitle;
+    String originalTitle;
     @SerializedName("genre_ids")
     @Expose
-    private List<Integer> genreIds = null;
+    List<Integer> genreIds = null;
     @SerializedName("backdrop_path")
     @Expose
-    private String backdropPath;
+    String backdropPath;
     @SerializedName("adult")
     @Expose
-    private Boolean adult;
+    Boolean adult;
     @SerializedName("overview")
     @Expose
-    private String overview;
+    String overview;
     @SerializedName("release_date")
     @Expose
-    private String releaseDate;
+    String releaseDate;
+
+    /*Empty constructor required by Parceler*/
+    public Movie() {}
 
     public Integer getVoteCount() {
         return voteCount;
