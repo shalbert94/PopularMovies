@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import com.example.shalom.popularmovies.data.ServiceGenerator;
 import com.example.shalom.popularmovies.data.TheMovieDBClient;
 import com.example.shalom.popularmovies.data.model.Movie;
-import com.example.shalom.popularmovies.data.model.Result;
+import com.example.shalom.popularmovies.data.model.MovieListResult;
 import com.example.shalom.popularmovies.recyclerview.EndlessRecyclerViewScrollListener;
 import com.example.shalom.popularmovies.recyclerview.MoviePosterRecyclerViewAdapter;
 
@@ -99,9 +99,9 @@ public class MoviePosterFragment extends Fragment {
     private void loadMovies() {
         final String api_key = getResources().getString(R.string.the_movie_db_api_key);
         currentPage++;
-        theMovieDBClient.popularMovies(path, api_key, currentPage).enqueue(new Callback<Result>() {
+        theMovieDBClient.popularMovies(path, api_key, currentPage).enqueue(new Callback<MovieListResult>() {
             @Override
-            public void onResponse(Call<Result> call, Response<Result> response) {
+            public void onResponse(Call<MovieListResult> call, Response<MovieListResult> response) {
                 if (response.isSuccessful()) {
                     Log.e(LOG_TAG, "call.request().url().toString(): " + call.request().url().toString());
                     adapter.updateMovies(response.body().getMovies(), filterChanged);
@@ -119,7 +119,7 @@ public class MoviePosterFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<Result> call, Throwable t) {
+            public void onFailure(Call<MovieListResult> call, Throwable t) {
                 Log.e(LOG_TAG, "Error loading from API");
             }
         });
