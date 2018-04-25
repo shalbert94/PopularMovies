@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.shalom.popularmovies.data.ServiceGenerator;
 import com.example.shalom.popularmovies.data.TheMovieDBClient;
 import com.example.shalom.popularmovies.data.model.Movie;
 import com.example.shalom.popularmovies.data.model.Video;
@@ -69,6 +70,8 @@ public class MovieDetailsFragment extends Fragment {
                              Bundle savedInstanceState) {
         /*Inflate the layout for this fragment*/
         View view = inflater.inflate(R.layout.fragment_movie_details, container, false);
+
+        theMovieDBClient = ServiceGenerator.createService(TheMovieDBClient.class);
 
         unbinder = ButterKnife.bind(this, view);
 
