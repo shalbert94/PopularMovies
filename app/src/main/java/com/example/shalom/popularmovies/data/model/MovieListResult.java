@@ -3,13 +3,14 @@ package com.example.shalom.popularmovies.data.model;
 
 import android.util.Log;
 
-import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Result {
+import java.util.List;
 
-    public static final String LOG_TAG = Result.class.getSimpleName();
+public class MovieListResult {
+
+    public static final String LOG_TAG = MovieListResult.class.getSimpleName();
 
     @SerializedName("page")
     @Expose
