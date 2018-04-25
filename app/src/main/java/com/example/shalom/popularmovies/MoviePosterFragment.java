@@ -55,7 +55,7 @@ public class MoviePosterFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_movie_poster, container, false);
         theMovieDBClient = ServiceGenerator.createService(TheMovieDBClient.class);
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.movie_poster_recyclerview);
+        recyclerView = view.findViewById(R.id.movie_poster_recyclerview);
 
         /*Number of columns displayed by RecyclerView*/
         int numberOfColumns = 2;
