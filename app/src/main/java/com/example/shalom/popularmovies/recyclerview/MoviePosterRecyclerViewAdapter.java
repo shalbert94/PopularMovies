@@ -38,7 +38,8 @@ public class MoviePosterRecyclerViewAdapter extends RecyclerView.Adapter {
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         /*The {@code RelativeLayout} enclosing the views of this {@code ViewHolder}*/
-        public RelativeLayout parentLayout;
+        @BindView(R.id.grid_item_movie_poster_relativelayout)
+        RelativeLayout parentLayout;
         /*Holds loaded images from movie's {@code posterPath} in {@link Movie.java}*/
         @BindView(R.id.movie_poster_imageview)
         ImageView moviePosterIV;
@@ -49,7 +50,6 @@ public class MoviePosterRecyclerViewAdapter extends RecyclerView.Adapter {
         public ViewHolder(View itemView) {
             super(itemView);
 
-            parentLayout = (RelativeLayout) itemView.findViewById(R.id.grid_item_movie_poster_relativelayout);
             ButterKnife.bind(this, itemView);
         }
     }
@@ -122,4 +122,5 @@ public class MoviePosterRecyclerViewAdapter extends RecyclerView.Adapter {
         this.movieList.addAll(movieList);
         notifyDataSetChanged();
     }
+
 }
