@@ -1,7 +1,6 @@
 package com.example.shalom.popularmovies;
 
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
@@ -81,34 +80,36 @@ public class MovieDetailsFragment extends Fragment {
         String url = "https://image.tmdb.org/t/p/w500" + posterPath;
         Picasso.get().load(url).into(binding.detailsPosterImageview);
 
-        return view;
-    }
-
-//    TODO(1) Replace this onClick listener with a databinding OnClickListener
-    @OnClick(R.id.play_trailer_button)
-    public void onClick() {
-
-        final String api_key = getResources().getString(R.string.the_movie_db_api_key);
-        theMovieDBClient.videos(thisMovie.getId().toString(), api_key).enqueue(new Callback<VideoResults>() {
+        binding.playTrailerButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(Call<VideoResults> call, Response<VideoResults> response) {
-                if (response.isSuccessful()) {
-                    Log.d(LOG_TAG, "videos() request sucessfull");
-                    for (Video video : response.body().getVideos()) {
-                        /*Send intent to youtube for a YouTube video that's a movie trailer*/
-                        if (video.getSite().equals("YouTube") && video.getType().equals("Trailer")) {
-                            watchYoutubeVideo(getContext(), video.getKey());
-                            break;
+            public void onClick(View view) {
+                Log.e(LOG_TAG, "onClick() called");
+
+                final String api_key = getResources().getString(R.string.the_movie_db_api_key);
+                theMovieDBClient.videos(thisMovie.getId().toString(), api_key).enqueue(new Callback<VideoResults>() {
+                    @Override
+                    public void onResponse(Call<VideoResults> call, Response<VideoResults> response) {
+                        if (response.isSuccessful()) {
+                            Log.d(LOG_TAG, "videos() request sucessfull");
+                            for (Video video : response.body().getVideos()) {
+                                /*Send intent to youtube for a YouTube video that's a movie trailer*/
+                                if (video.getSite().equals("YouTube") && video.getType().equals("Trailer")) {
+                                    watchYoutubeVideo(getContext(), video.getKey());
+                                    break;
+                                }
+                            }
                         }
                     }
-                }
-            }
 
-            @Override
-            public void onFailure(Call<VideoResults> call, Throwable t) {
+                    @Override
+                    public void onFailure(Call<VideoResults> call, Throwable t) {
 
+                    }
+                });
             }
         });
+
+        return view;
     }
 
     /*Perform implicit Intent that opens a YouTube video*/
