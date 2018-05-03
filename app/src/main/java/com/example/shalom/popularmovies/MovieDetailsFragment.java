@@ -1,9 +1,11 @@
 package com.example.shalom.popularmovies;
 
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,22 +13,18 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.shalom.popularmovies.data.ServiceGenerator;
 import com.example.shalom.popularmovies.data.TheMovieDBClient;
 import com.example.shalom.popularmovies.data.model.Movie;
 import com.example.shalom.popularmovies.data.model.Video;
 import com.example.shalom.popularmovies.data.model.VideoResults;
+import com.example.shalom.popularmovies.databinding.FragmentMovieDetailsBinding;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,26 +35,15 @@ import retrofit2.Response;
  * Fragment controlling screen with movie details
  */
 public class MovieDetailsFragment extends Fragment {
+
     public static final String LOG_TAG = MovieDetailsFragment.class.getSimpleName();
 
     /*Key used to persist data through the received {@code Bundle}*/
     public static final String MOVIE_KEY = "MOVIE_KEY";
 
     private Movie thisMovie;
-
-    /*Bind child-views*/
-    @BindView(R.id.original_title_textview)
-    TextView originalTitleTextView;
-    @BindView(R.id.details_poster_imageview)
-    ImageView posterPathImageView;
-    @BindView(R.id.plot_synopsis_textview)
-    TextView synopsisTextView;
-    @BindView(R.id.user_rating_textview)
-    TextView ratingTextView;
-    @BindView(R.id.release_date_textview)
-    TextView releaseDateTextView;
-
-    private Unbinder unbinder;
+    /*Data binder*/
+    private FragmentMovieDetailsBinding binding;
 
     private TheMovieDBClient theMovieDBClient;
 
@@ -68,12 +55,11 @@ public class MovieDetailsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_movie_details, container, false);
         /*Inflate the layout for this fragment*/
-        View view = inflater.inflate(R.layout.fragment_movie_details, container, false);
+        View view = binding.getRoot();
 
         theMovieDBClient = ServiceGenerator.createService(TheMovieDBClient.class);
-
-        unbinder = ButterKnife.bind(this, view);
 
         /*Unparcel {@code Movie.class} from arguments*/
         Bundle bundle = this.getArguments();
@@ -86,24 +72,19 @@ public class MovieDetailsFragment extends Fragment {
         String releaseDate = thisMovie.getReleaseDate();
 
         /*Define what should be displayed*/
-        originalTitleTextView.setText(originalTitle);
-        synopsisTextView.setText(synopsis);
-        ratingTextView.setText(rating + " " + getContext().getString(R.string.rating));
-        releaseDateTextView.setText(releaseDate);
+        binding.originalTitleTextview.setText(originalTitle);
+        binding.plotSynopsisTextview.setText(synopsis);
+        binding.userRatingTextview.setText(rating + " " + getContext().getString(R.string.rating));
+        binding.releaseDateTextview.setText(releaseDate);
 
         /*Form URL for the movie's poster*/
         String url = "https://image.tmdb.org/t/p/w500" + posterPath;
-        Picasso.get().load(url).into(posterPathImageView);
+        Picasso.get().load(url).into(binding.detailsPosterImageview);
 
         return view;
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
-
+//    TODO(1) Replace this onClick listener with a databinding OnClickListener
     @OnClick(R.id.play_trailer_button)
     public void onClick() {
 
