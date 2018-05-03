@@ -1,70 +1,74 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.shalom.popularmovies.MovieDetailsFragment">
+<layout>
 
-    <RelativeLayout
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context="com.example.shalom.popularmovies.MovieDetailsFragment">
 
-        <TextView
-            android:id="@+id/original_title_textview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="21sp"
-            android:layout_marginTop="16dp"
-            android:layout_centerHorizontal="true"
-            tools:text="John Wick"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/details_poster_imageview"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_below="@id/original_title_textview"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp"
-            android:src="@mipmap/ic_launcher_round"/>
+            <TextView
+                android:id="@+id/original_title_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:textSize="21sp"
+                tools:text="John Wick" />
 
-        <Button
-            android:id="@+id/play_trailer_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/details_poster_imageview"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp"
-            android:text="@string/play_trailer"/>
+            <ImageView
+                android:id="@+id/details_poster_imageview"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_below="@id/original_title_textview"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:src="@mipmap/ic_launcher_round" />
 
-        <TextView
-            android:id="@+id/plot_synopsis_textview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/play_trailer_button"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginLeft="16dp"
-            android:gravity="center"
-            tools:text="Set in a post-apocalyptic world, young Thomas is deposited in a community of boys after his memory is erased, soon learning they're all trapped in a maze that will require him to join forces with fellow “runners” for a shot at escape."/>
+            <Button
+                android:id="@+id/play_trailer_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/details_poster_imageview"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:text="@string/play_trailer" />
 
-        <TextView
-            android:id="@+id/user_rating_textview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/plot_synopsis_textview"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp"
-            tools:text="4.0 out of 10"/>
+            <TextView
+                android:id="@+id/plot_synopsis_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/play_trailer_button"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                tools:text="Set in a post-apocalyptic world, young Thomas is deposited in a community of boys after his memory is erased, soon learning they're all trapped in a maze that will require him to join forces with fellow “runners” for a shot at escape." />
 
-        <TextView
-            android:id="@+id/release_date_textview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/user_rating_textview"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp"
-            tools:text="2014-07-30"/>
+            <TextView
+                android:id="@+id/user_rating_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/plot_synopsis_textview"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                tools:text="4.0 out of 10" />
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/release_date_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/user_rating_textview"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                tools:text="2014-07-30" />
 
-</ScrollView>
+        </RelativeLayout>
+
+    </ScrollView>
+</layout>
