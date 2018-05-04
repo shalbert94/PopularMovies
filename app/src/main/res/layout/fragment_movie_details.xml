@@ -1,7 +1,6 @@
 <layout>
 
-    <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -67,6 +66,36 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="16dp"
                 tools:text="2014-07-30" />
+
+
+            <TextView
+                android:id="@+id/review_author_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/release_date_textview"
+                android:layout_marginTop="8dp"
+                android:textColor="@android:color/holo_blue_dark"
+                tools:text="Review by Andrew" />
+
+            <Button
+                android:id="@+id/next_review_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/release_date_textview"
+                android:text="Next"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/previous_review_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/release_date_textview"
+                android:text="Previous"
+                android:textSize="14sp" />
+
 
         </RelativeLayout>
 
