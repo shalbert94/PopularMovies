@@ -15,7 +15,7 @@ import retrofit2.http.Query;
 
 public interface TheMovieDBClient {
     @GET("movie/{movie_id}/videos")
-    Call<Trailers> videos(@Path("movie_id") String movieID, @Query("api_key") String apiKey);
+    Call<Trailers> trailers(@Path("movie_id") String movieID, @Query("api_key") String apiKey);
 
     @GET("movie/{order_by}")
     Call<Movies> popularMovies(@Path("order_by") String orderBy, @Query("api_key") String apiKey, @Query("page") int page);
