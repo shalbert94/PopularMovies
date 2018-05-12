@@ -12,33 +12,30 @@ import com.example.shalom.popularmovies.service.model.Review;
 
 import java.util.List;
 
-public class SharedMovieViewModel extends ViewModel{
-    /*Shared among MoviePosterFragment and MovieDetailsFragment*/
-    private String api_key = ApiKeys.theMovieDBApiKey;
-
-    /*Relate to MoviePosterFragment*/
+/*Relates to MoviePosterFragment.java*/
+public class MoviePosterViewModel extends ViewModel{
     private String path;
     private int currentPage;
 
-    /*Relate to MovieDetailsFragment*/
+    /*Observable object that's updated with a {@code List} of movies*/
     private MutableLiveData<List<Movie>> moviesObservable;
-    private List<Review> reviews;
-    private int reviewsIndex = 0;
 
-    public SharedMovieViewModel() {
+    public MoviePosterViewModel() {
         path = "popular";
         this.currentPage = 1;
     }
 
     public LiveData<List<Movie>> getMoviesObservable() {
-        moviesObservable = MovieDBRepository.getInstance().getMovieList(path, currentPage++);
+        getMoreMovies();
         return moviesObservable;
     }
-
+    /*Calls repository to retrieve a new {@code List} of movies*/
     public void getMoreMovies() {
         moviesObservable = MovieDBRepository.getInstance().getMovieList(path, currentPage++);
     }
 
+    //TODO(1) Confirm currentPage is being reset when filter changes
+    /*Called when the list filter is changed*/
     public void changeFilter() {
         switch (path) {
             case "popular":
