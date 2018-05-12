@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.example.shalom.popularmovies.view.ui.MovieDetailsFragment;
 import com.example.shalom.popularmovies.R;
 import com.example.shalom.popularmovies.service.model.Movie;
+import com.example.shalom.popularmovies.viewholder.MovieDetailsViewModel;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -91,7 +92,7 @@ public class MoviePosterRecyclerViewAdapter extends RecyclerView.Adapter {
 
                 /*Pass the clicked movie's details to the Fragment*/
                 Bundle movieDetails = new Bundle();
-                movieDetails.putParcelable(MovieDetailsFragment.MOVIE_KEY, Parcels.wrap(movie));
+                movieDetails.putParcelable(MovieDetailsViewModel.MOVIE_KEY, Parcels.wrap(movie));
                 movieDetailsFragment.setArguments(movieDetails);
 
                 /*Add Fragment*/
