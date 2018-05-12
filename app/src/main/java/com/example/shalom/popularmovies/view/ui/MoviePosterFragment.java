@@ -16,9 +16,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.shalom.popularmovies.R;
-import com.example.shalom.popularmovies.viewholder.SharedMovieViewModel;
+import com.example.shalom.popularmovies.viewholder.MoviePosterViewModel;
 import com.example.shalom.popularmovies.service.model.Movie;
-import com.example.shalom.popularmovies.service.model.Movies;
 import com.example.shalom.popularmovies.view.adapter.EndlessRecyclerViewScrollListener;
 import com.example.shalom.popularmovies.view.adapter.MoviePosterRecyclerViewAdapter;
 
@@ -36,7 +35,7 @@ public class MoviePosterFragment extends Fragment {
     private RecyclerView recyclerView;
     private MoviePosterRecyclerViewAdapter adapter;
 
-    private SharedMovieViewModel viewModel;
+    private MoviePosterViewModel viewModel;
 
 
     public MoviePosterFragment() {
@@ -50,14 +49,11 @@ public class MoviePosterFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_movie_poster, container, false);
 
-        viewModel = ViewModelProviders.of(getActivity()).get(SharedMovieViewModel.class);
-
+        viewModel = ViewModelProviders.of(getActivity()).get(MoviePosterViewModel.class);
 
         recyclerView = view.findViewById(R.id.movie_poster_recyclerview);
-
         /*Number of columns displayed by RecyclerView*/
         int numberOfColumns = 2;
-
         adapter = new MoviePosterRecyclerViewAdapter(getActivity(), new ArrayList<Movie>(0));
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), numberOfColumns);
         recyclerView.setLayoutManager(layoutManager);
