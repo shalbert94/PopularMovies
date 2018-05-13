@@ -81,7 +81,6 @@ public class MoviePosterRecyclerViewAdapter extends RecyclerView.Adapter {
         /*Cast {@code holder} to type {@code ViewHolder}*/
         ViewHolder viewHolder = (ViewHolder) holder;
 
-//        TODO(1) Implement onClickListener with ButterKnife
         /*Set {@code OnClickListener} for tapping anywhere on the grid item*/
         viewHolder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override

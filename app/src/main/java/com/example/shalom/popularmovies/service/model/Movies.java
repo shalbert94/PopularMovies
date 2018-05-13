@@ -54,7 +54,6 @@ public class Movies {
     }
 
     public void setMovies(List<Movie> movies) {
-//        TODO(0) check if Movies is set correctly
         Log.e(LOG_TAG, "List<Movie> movies: " + movies.size());
         this.movies = movies;
     }

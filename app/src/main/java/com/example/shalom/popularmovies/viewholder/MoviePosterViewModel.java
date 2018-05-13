@@ -4,11 +4,8 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
-import com.example.shalom.popularmovies.data.ApiKeys;
 import com.example.shalom.popularmovies.service.repository.MovieDBRepository;
 import com.example.shalom.popularmovies.service.model.Movie;
-import com.example.shalom.popularmovies.service.model.Movies;
-import com.example.shalom.popularmovies.service.model.Review;
 
 import java.util.List;
 
@@ -34,7 +31,6 @@ public class MoviePosterViewModel extends ViewModel{
         moviesObservable = MovieDBRepository.getInstance().getMovieList(path, currentPage++);
     }
 
-    //TODO(1) Confirm currentPage is being reset when filter changes
     /*Called when the list filter is changed*/
     public void changeFilter() {
         switch (path) {

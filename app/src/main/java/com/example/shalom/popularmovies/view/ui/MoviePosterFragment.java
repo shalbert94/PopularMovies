@@ -49,6 +49,7 @@ public class MoviePosterFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_movie_poster, container, false);
 
+
         viewModel = ViewModelProviders.of(getActivity()).get(MoviePosterViewModel.class);
 
         recyclerView = view.findViewById(R.id.movie_poster_recyclerview);
@@ -111,7 +112,6 @@ public class MoviePosterFragment extends Fragment {
 
         viewModel.getMoviesObservable().observe(this, getMoviesObserver);
     }
-
 
 
 }
