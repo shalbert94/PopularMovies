@@ -1,10 +1,9 @@
 package com.example.shalom.popularmovies.service.repository;
 
-import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.util.Log;
 
-import com.example.shalom.popularmovies.data.ApiKeys;
+import com.example.shalom.popularmovies.BuildConfig;
 import com.example.shalom.popularmovies.service.model.Movie;
 import com.example.shalom.popularmovies.service.model.Movies;
 import com.example.shalom.popularmovies.service.model.Review;
@@ -26,9 +25,9 @@ public class MovieDBRepository {
     /*Instantiate the Client containing the methods that this repository can call*/
     private TheMovieDBClient theMovieDBClient;
     /*API key for TheMovieDB.org*/
-    private final String apiKey = ApiKeys.theMovieDBApiKey;
+    private final String apiKey = BuildConfig.THE_MOVIEDB_API_KEY;
 
-    /*Enables passing of getMovieList() response to MoviePosterViewModel*/
+    /*Placeholder properties which can inform the viewmodel of onChange()*/
     private MutableLiveData<List<Movie>> movieList = new MutableLiveData<>();
     private MutableLiveData<String> trailerKey = new MutableLiveData<>();
     private MutableLiveData<List<Review>> reviewList = new MutableLiveData<>();
@@ -48,7 +47,6 @@ public class MovieDBRepository {
         return movieDBRepository;
     }
 
-//    TODO(1) Rm return types since onResponse posts the value
 
     /**
      * Posts Retrofit2 response to {@code moviesObservable} when onResponse() is called
