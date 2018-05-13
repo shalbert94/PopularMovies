@@ -38,7 +38,6 @@ import retrofit2.Response;
  * Fragment controlling screen with movie details
  */
 
-//TODO(1) Add onClick's for review buttons
 public class MovieDetailsFragment extends Fragment {
     public static final String LOG_TAG = MovieDetailsFragment.class.getSimpleName();
 

@@ -28,8 +28,8 @@ public class MovieDetailsViewModel extends ViewModel {
     /*Location in the ***** */
     private int reviewsIndex = 0;
     /*List of reviews for the movie*/
-    private MutableLiveData<List<Review>> reviewsListObservable = new MutableLiveData<>(); //TODO Add observer. onChanged --> setText(displayedReview), prior it should say "Loading..."
-    private MutableLiveData<String> displayedReview = new MutableLiveData<>(); //TODO post values from prev and next and set observer, onchange() changes display
+    private MutableLiveData<List<Review>> reviewsListObservable = new MutableLiveData<>();
+    private MutableLiveData<String> displayedReview = new MutableLiveData<>();
 
     public void setMovieDetails(Movie thisMovie) {
         originalTitle = thisMovie.getOriginalTitle();
