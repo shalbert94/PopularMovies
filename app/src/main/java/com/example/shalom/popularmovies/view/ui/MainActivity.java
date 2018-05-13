@@ -21,9 +21,11 @@ public class MainActivity extends AppCompatActivity {
         /*Get FragmentManager*/
         FragmentManager fm = getSupportFragmentManager();
 
-        /*Add Fragment*/
-        FragmentTransaction ft = fm.beginTransaction();
-        ft.add(R.id.fragment_container, new MoviePosterFragment(), MOVIE_POSTER_FRAGMENT_TAG);
-        ft.commit();
+        if (savedInstanceState == null) {
+            /*Add Fragment*/
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.add(R.id.fragment_container, new MoviePosterFragment(), MOVIE_POSTER_FRAGMENT_TAG);
+            ft.commit();
+        }
     }
 }
