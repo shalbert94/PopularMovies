@@ -1,5 +1,5 @@
 To use this application you must do the following:
-  1. Get an API key for www.themoviedb.org
-  2. Add the following string to you res/values/strings file:
-    <string name="the_movie_db_api_key">XXXXXXXXXXXXXXXXXXX</string>
+  1. Get an API key from www.themoviedb.org
+  2. Paste the following line to the PopularMovies/gradle.properties file:
+    THE_MOVIEDB_API_KEY="XXXXXXXXXXXXXXXXXXX"
   3. Replace "XXXXXXXXXXXXXXXXXXX" with your API key
