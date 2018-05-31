@@ -1,5 +1,5 @@
 
-package com.example.shalom.popularmovies.service.model;
+package com.example.shalom.popularmovies.data.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

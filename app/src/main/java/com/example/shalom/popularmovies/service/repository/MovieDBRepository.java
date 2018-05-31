@@ -4,12 +4,12 @@ import android.arch.lifecycle.MutableLiveData;
 import android.util.Log;
 
 import com.example.shalom.popularmovies.BuildConfig;
-import com.example.shalom.popularmovies.service.model.Movie;
-import com.example.shalom.popularmovies.service.model.Movies;
-import com.example.shalom.popularmovies.service.model.Review;
-import com.example.shalom.popularmovies.service.model.Reviews;
-import com.example.shalom.popularmovies.service.model.Trailer;
-import com.example.shalom.popularmovies.service.model.Trailers;
+import com.example.shalom.popularmovies.data.model.Movie;
+import com.example.shalom.popularmovies.data.model.Movies;
+import com.example.shalom.popularmovies.data.model.Review;
+import com.example.shalom.popularmovies.data.model.Reviews;
+import com.example.shalom.popularmovies.data.model.Trailer;
+import com.example.shalom.popularmovies.data.model.Trailers;
 
 import java.util.List;
 

@@ -1,5 +1,5 @@
 
-package com.example.shalom.popularmovies.service.model;
+package com.example.shalom.popularmovies.data.model;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;

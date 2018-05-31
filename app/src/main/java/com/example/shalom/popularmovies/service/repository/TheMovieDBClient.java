@@ -1,8 +1,8 @@
 package com.example.shalom.popularmovies.service.repository;
 
-import com.example.shalom.popularmovies.service.model.Movies;
-import com.example.shalom.popularmovies.service.model.Reviews;
-import com.example.shalom.popularmovies.service.model.Trailers;
+import com.example.shalom.popularmovies.data.model.Movies;
+import com.example.shalom.popularmovies.data.model.Reviews;
+import com.example.shalom.popularmovies.data.model.Trailers;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

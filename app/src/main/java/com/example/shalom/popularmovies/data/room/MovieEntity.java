@@ -6,7 +6,7 @@ import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 import com.example.shalom.popularmovies.data.MovieContract.FavoriteMoviesEntry;
-import com.example.shalom.popularmovies.service.model.Movie;
+import com.example.shalom.popularmovies.data.model.Movie;
 
 @Entity(tableName = FavoriteMoviesEntry.TABLE_NAME)
 public class MovieEntity {

@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.example.shalom.popularmovies.view.ui.MovieDetailsFragment;
 import com.example.shalom.popularmovies.R;
-import com.example.shalom.popularmovies.service.model.Movie;
+import com.example.shalom.popularmovies.data.model.Movie;
 import com.example.shalom.popularmovies.viewholder.MovieDetailsViewModel;
 import com.squareup.picasso.Picasso;
 

@@ -5,7 +5,7 @@ import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
 import com.example.shalom.popularmovies.service.repository.MovieDBRepository;
-import com.example.shalom.popularmovies.service.model.Movie;
+import com.example.shalom.popularmovies.data.model.Movie;
 
 import java.util.List;
 

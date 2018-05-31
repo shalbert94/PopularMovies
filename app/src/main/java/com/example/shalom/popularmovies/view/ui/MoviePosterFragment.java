@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 
 import com.example.shalom.popularmovies.R;
 import com.example.shalom.popularmovies.viewholder.MoviePosterViewModel;
-import com.example.shalom.popularmovies.service.model.Movie;
+import com.example.shalom.popularmovies.data.model.Movie;
 import com.example.shalom.popularmovies.view.adapter.EndlessRecyclerViewScrollListener;
 import com.example.shalom.popularmovies.view.adapter.MoviePosterRecyclerViewAdapter;
 

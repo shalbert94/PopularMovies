@@ -11,15 +11,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.shalom.popularmovies.R;
-import com.example.shalom.popularmovies.service.model.Movie;
-import com.example.shalom.popularmovies.service.model.Review;
-import com.example.shalom.popularmovies.service.model.Reviews;
+import com.example.shalom.popularmovies.data.model.Movie;
+import com.example.shalom.popularmovies.data.model.Review;
 import com.example.shalom.popularmovies.databinding.FragmentMovieDetailsBinding;
 import com.example.shalom.popularmovies.viewholder.MovieDetailsViewModel;
 import com.squareup.picasso.Picasso;
@@ -27,10 +25,6 @@ import com.squareup.picasso.Picasso;
 import org.parceler.Parcels;
 
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 
 /**
