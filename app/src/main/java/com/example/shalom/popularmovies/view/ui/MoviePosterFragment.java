@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -68,7 +69,11 @@ public class MoviePosterFragment extends Fragment {
             }
         });
 
-        subscribeToMovies();
+        if (!viewModel.pathIsFavourites()) {
+            subscribeToMovies();
+        } else {
+            subscribeToFavouriteMovies();
+        }
 
         setHasOptionsMenu(true);
         return view;
