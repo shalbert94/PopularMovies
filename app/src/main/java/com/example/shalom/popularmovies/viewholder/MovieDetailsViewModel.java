@@ -1,17 +1,19 @@
 package com.example.shalom.popularmovies.viewholder;
 
+import android.app.Application;
+import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
 
 import com.example.shalom.popularmovies.data.model.Movie;
 import com.example.shalom.popularmovies.data.model.Review;
 import com.example.shalom.popularmovies.service.repository.MovieDBRepository;
+import com.example.shalom.popularmovies.service.repository.MovieRoomRepository;
 
 import java.util.List;
 
 /*Relates to MovieDetailsFragment.java*/
-public class MovieDetailsViewModel extends ViewModel {
+public class MovieDetailsViewModel extends AndroidViewModel {
     /*Key used to persist data through the received {@code Bundle}*/
     public static final String MOVIE_KEY = "MOVIE_KEY";
 
@@ -31,13 +33,30 @@ public class MovieDetailsViewModel extends ViewModel {
     private MutableLiveData<List<Review>> reviewsListObservable = new MutableLiveData<>();
     private MutableLiveData<String> displayedReview = new MutableLiveData<>();
 
+    //Access Room database
+    private MovieRoomRepository roomRepository;
+
+    //Currently displayed movie
+    private Movie displayedMovie;
+    //Tracks whether the displayed movie was favorited by the user
+    boolean favorited;
+
+    public MovieDetailsViewModel(Application application) {
+        super(application);
+        roomRepository = new MovieRoomRepository(application);
+    }
+
     public void setMovieDetails(Movie thisMovie) {
+        displayedMovie = thisMovie;
         originalTitle = thisMovie.getOriginalTitle();
         posterUrl = "https://image.tmdb.org/t/p/w500" + thisMovie.getPosterPath();
         synopsis = thisMovie.getOverview();
         rating = thisMovie.getVoteAverage().toString();
         releaseDate = thisMovie.getReleaseDate();
         movieID = thisMovie.getId().toString();
+
+        //Since Genre IDs aren't stored in the Room database, if it's null we know the data's source
+        favorited = thisMovie.getGenreIds() == null;
     }
 
     public void previousReview() {
@@ -62,9 +81,31 @@ public class MovieDetailsViewModel extends ViewModel {
         getDisplayedReview();
     }
 
+    public void updateDatabase() {
+        if (favorited) {
+            deleteMovie();
+            favorited = false;
+        } else {
+            insertMovie();
+            favorited = true;
+        }
+    }
+
+    //Inserts favourite movie into Room database
+    private void insertMovie() {
+        roomRepository.insert(displayedMovie.convertToMovieEntity());
+    }
+
+    //Deletes favourite movie from Room database
+    private void deleteMovie() {
+        roomRepository.delete(displayedMovie.convertToMovieEntity());
+    }
+
     public MutableLiveData<String> getDisplayedReview() {
         if (reviewsListObservable.getValue() == null) {
             displayedReview.setValue("Loading...");
+        } else if(reviewsListObservable.getValue().size() == 0) {
+           displayedReview.setValue("No reviews found");
         } else {
             String author = reviewsListObservable.getValue().get(reviewsIndex).getAuthor();
             displayedReview.setValue("Review by " + author);
