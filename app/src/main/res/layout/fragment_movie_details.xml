@@ -1,5 +1,5 @@
 <layout>
-
+<!--TODO: Add favourites feature-->
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -9,6 +9,15 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/favourite_fab"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/ic_star_black_24dp"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/original_title_textview"
+                android:layout_margin="16dp"/>
 
             <TextView
                 android:id="@+id/original_title_textview"
