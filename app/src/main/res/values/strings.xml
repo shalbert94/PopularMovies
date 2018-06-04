@@ -4,6 +4,7 @@
     <!--Screen titles based on current filter for movies-->
     <string name="top_rated">Top Rated Movies</string>
     <string name="popular">Popular Movies</string>
+    <string name="favourites">Favourites</string>
 
     <!--Appended to movie rating on details screen-->
     <string name="rating"> out of 10</string>
