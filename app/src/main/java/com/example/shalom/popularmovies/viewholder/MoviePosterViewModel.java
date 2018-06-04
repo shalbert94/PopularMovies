@@ -37,7 +37,9 @@ public class MoviePosterViewModel extends AndroidViewModel {
     }
 
     public LiveData<List<Movie>> getMoviesObservable() {
-        getMoreMovies();
+        if (moviesObservable == null) {
+            getMoreMovies();
+        }
         return moviesObservable;
     }
 
