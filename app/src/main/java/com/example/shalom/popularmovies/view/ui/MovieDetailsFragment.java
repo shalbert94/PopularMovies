@@ -104,6 +104,13 @@ public class MovieDetailsFragment extends Fragment {
                 openReviewInBrowser();
             }
         });
+
+        binding.favouriteFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewModel.updateDatabase();
+            }
+        });
     }
 
     private void subscribeReview(){
