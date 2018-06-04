@@ -65,7 +65,6 @@ public class MoviePosterViewModel extends AndroidViewModel {
                 path = "popular";
         }
         currentPage = 1;
-        getMoviesObservable();
     }
 
     public String getPath() {
@@ -76,16 +75,4 @@ public class MoviePosterViewModel extends AndroidViewModel {
         return path == "favourites";
     }
 
-    private void subscribeToFavouriteMovies() {
-        final Observer<List<MovieEntity>> getFavouriteMoviesObserver = new Observer<List<MovieEntity>>() {
-            @Override
-            public void onChanged(@Nullable List<MovieEntity> movieEntities) {
-                List<Movie> movies = new ArrayList<>();
-                for (MovieEntity movieEntity : movieEntities) {
-                    movies.add(movieEntity.convertToMovie());
-                }
-            }
-        };
-        vgetFavouriteMoviesObservable().observe(this, getFavouriteMoviesObserver);
-    }
 }
