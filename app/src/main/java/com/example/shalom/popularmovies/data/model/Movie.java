@@ -58,6 +58,19 @@ public class Movie {
     /*Empty constructor required by Parceler*/
     public Movie() {}
 
+    public MovieEntity convertToMovieEntity() {
+        MovieEntity movieEntity = new MovieEntity();
+        movieEntity.setId(id);
+        movieEntity.setVoteAverage(voteAverage);
+        movieEntity.setTitle(title);
+        movieEntity.setPosterPath(posterPath);
+        movieEntity.setOriginalTitle(originalTitle);
+        movieEntity.setOverview(overview);
+        movieEntity.setReleaseDate(releaseDate);
+
+        return movieEntity;
+    }
+
     public Integer getVoteCount() {
         return voteCount;
     }
