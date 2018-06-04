@@ -13,6 +13,9 @@ public final class MovieContract {
     public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
     public static final String PATH_FAVORITED_MOVIES = "favourite_movies";
 
+    public static final String DATABASE_NAME = "favourite_movies.db";
+    public static final int DATABASE_VERSION = 2;
+
     public static final class FavoriteMoviesEntry implements BaseColumns {
 
         public static final Uri CONTENT_URI =
