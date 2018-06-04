@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.shalom.popularmovies.R;
+import com.example.shalom.popularmovies.data.model.MovieEntity;
 import com.example.shalom.popularmovies.viewholder.MoviePosterViewModel;
 import com.example.shalom.popularmovies.data.model.Movie;
 import com.example.shalom.popularmovies.view.adapter.EndlessRecyclerViewScrollListener;
@@ -67,7 +68,7 @@ public class MoviePosterFragment extends Fragment {
             }
         });
 
-        observeViewModel();
+        subscribeToMovies();
 
         setHasOptionsMenu(true);
         return view;
@@ -91,27 +92,45 @@ public class MoviePosterFragment extends Fragment {
     private void changeFilter() {
         switch (viewModel.getPath()) {
             case "popular":
-                getActivity().setTitle(getContext().getString(R.string.top_rated));
+                getActivity().setTitle(R.string.top_rated);
                 break;
             case "top_rated":
-                getActivity().setTitle(getContext().getString(R.string.popular));
+                getActivity().setTitle(R.string.favourites);
+                break;
+            case "favourites":
+                getActivity().setTitle(R.string.popular);
                 break;
         }
         viewModel.changeFilter();
         adapter.clearList();
         viewModel.getMoreMovies();
+        if (viewModel.pathIsFavourites()) subscribeToFavouriteMovies();
     }
 
-    private void observeViewModel() {
+    private void subscribeToMovies() {
         final Observer<List<Movie>> getMoviesObserver = new Observer<List<Movie>>() {
             @Override
             public void onChanged(@Nullable List<Movie> movies) {
                 adapter.updateMovies(movies);
             }
         };
-
         viewModel.getMoviesObservable().observe(this, getMoviesObserver);
     }
+
+    private void subscribeToFavouriteMovies() {
+        final Observer<List<MovieEntity>> getFavouriteMoviesObserver = new Observer<List<MovieEntity>>() {
+            @Override
+            public void onChanged(@Nullable List<MovieEntity> movieEntities) {
+                List<Movie> movies = new ArrayList<>();
+                for (MovieEntity movieEntity : movieEntities) {
+                    movies.add(movieEntity.convertToMovie());
+                }
+                adapter.updateMovies(movies);
+            }
+        };
+        viewModel.getFavouriteMoviesObservable().observe(this, getFavouriteMoviesObserver);
+    }
+
 
 
 }

@@ -71,7 +71,7 @@ public class MoviePosterViewModel extends AndroidViewModel {
         return path;
     }
 
-    private boolean pathIsFavourites() {
+    public boolean pathIsFavourites() {
         return path == "favourites";
     }
 
